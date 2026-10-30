@@ -29,7 +29,6 @@ CORPUS_DIR.mkdir(parents=True, exist_ok=True)
 def load_embedder():
     return SentenceTransformer(EMBEDDING_MODEL)
 
-
 @st.cache_resource
 def get_chroma_client():
     return chromadb.PersistentClient(path=str(CHROMA_DIR))
@@ -40,7 +39,6 @@ def get_collection():
         COLLECTION_NAME,
         metadata={"hnsw:space": "cosine"},
     )
-
 
 def delete_collection_if_exists():
     client = get_chroma_client()
